@@ -15,3 +15,8 @@
           (t (list (gethash fst cache) position)))))
     (helper nums target (make-hash-table) 0))
 
+(defun is-armstrong-number? (x)
+  "Checks if the given number is armstrong number"
+  (defun count-digits(x) (if (eq x 0) 0 (1+ (count-digits (truncate x 10)))))
+  (defun helper (x count) (if (eq x 0) 0 (+ (expt (mod x 10) count) (helper (truncate x 10) count))))
+  (eq (helper x (count-digits x)) x))
